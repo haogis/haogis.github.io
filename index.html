@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Hao Zhang's Homepage</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Theme CSS -->
+    <!--<link href="css/freelancer.min.css" rel="stylesheet">-->
+    <link href="css/freelancer.css" rel="stylesheet">
+
+    <!-- Custom Fonts -->
+    <link href="vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic" rel="stylesheet" type="text/css">
+
+    <!-- Leaflet -->
+	<link rel="stylesheet" href="https://npmcdn.com/leaflet@1.0.0-rc.2/dist/leaflet.css" />
+	<script src="https://npmcdn.com/leaflet@1.0.0-rc.2/dist/leaflet.js"></script>
+
+	<style>#map { height: 500px; }
+.info { padding: 6px 8px; font: 14px/18px Arial, Helvetica, sans-serif; background: white; background: rgba(255,255,255,0.8); box-shadow: 0 0 15px rgba(0,0,0,0.2); border-radius: 5px; } .info h4 { margin: 0 0 5px; color: #777; }
+.legend { text-align: left; line-height: 18px; color: #555; } .legend i { width: 18px; height: 18px; float: left; margin-right: 8px; opacity: 0.7; }</style>
+
+</head>
+
+<body id="page-top" class="index">
+
+    <!-- Navigation -->
+    <nav id="mainNav" class="navbar navbar-default navbar-fixed-top navbar-custom">
+        <div class="container">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header page-scroll">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span> Menu <i class="fa fa-bars"></i>
+                </button>
+                <a class="navbar-brand" href="#page-top">Hao Zhang</a>
+            </div>
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav navbar-right">
+                    <li class="hidden">
+                        <a href="#page-top"></a>
+                    </li>
+                    <li class="page-scroll">
+                        <a href="main.html">Learn More</a>
+                    </li>
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container-fluid -->
+    </nav>
+
+    <!-- Header -->
+    <section class="success" id="main.html">
+        <div class="container">
+          <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+          <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet/v0.7.7/leaflet.css" />
+
+          <style type='text/css'>
+            .leaflet-heatmap-layer{
+              opacity:0.5 !important;
+            }
+          </style>
+
+        </head>
+
+      </br>
+        <body>
+          <div id="map" style=#map></div>
+
+          <script src="https://npmcdn.com/leaflet@1.0.0-rc.2/dist/leaflet.js"></script>
+          <script
+             src="http://leaflet.github.io/Leaflet.heat/dist/leaflet-heat.js">
+          </script>
+          <script type="text/javascript" src="js/tweetpoint.js"></script>
+
+          <script>
+        var map = L.map('map').setView([32.775, -117.071],10);
+
+        L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpandmbXliNDBjZWd2M2x6bDk3c2ZtOTkifQ._QA7i5Mpkd_m30IGElHziw',{
+          maxZoom:18,
+          attribution:'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, ' +
+            '<a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, ' +
+            'Imagery © <a href="http://mapbox.com">Mapbox</a>',
+          id: 'mapbox.light'
+        }).addTo(map);
+
+          var tweets = new L.LayerGroup();
+
+            var mbAttr = 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, ' +
+              '<a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, ' +
+              'Imagery © <a href="http://mapbox.com">Mapbox</a>',
+            mbUrl = 'https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpandmbXliNDBjZWd2M2x6bDk3c2ZtOTkifQ._QA7i5Mpkd_m30IGElHziw';
+
+            var grayscale   = L.tileLayer(mbUrl, {id: 'mapbox.light', attribution: mbAttr}),
+              streets  = L.tileLayer(mbUrl, {id: 'mapbox.streets',   attribution: mbAttr});
+
+              L.geoJson(quakePoints).addTo(map);
+
+              var heat = L.heatLayer(quakePoints,{
+                    radius: 20,
+                    blur: 15,
+                    maxZoom: 17
+                }).addTo(tweets);
+                map.addLayer(tweets);
+
+          var baseLayers = {
+            "Grayscale": grayscale,
+            "Streets": streets
+          };
+
+          var overlays = {
+            "tweetpoint": tweets
+          };
+
+          L.control.layers(baseLayers, overlays).addTo(map);
+          </script>
+        </body>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="text-center">
+        <div class="footer-above">
+            <div class="container">
+                <div class="row">
+                    <div class="footer-col col-md-4">
+                        <h3>Location</h3>
+                        <p>Storm Hall 309D
+                            <br>5500 Campanile Drive.
+                            <br>San Diego, CA 92182-4493</p>
+                    </div>
+                    <div class="footer-col col-md-4">
+                        <h3>Connect</h3>
+                        <ul class="list-inline">
+                            <!--<li>-->
+                                <!--<a href="#" class="btn-social btn-outline"><i class="fa fa-fw fa-facebook"></i></a>-->
+                            <!--</li>-->
+                            <!--<li>-->
+                                <!--<a href="#" class="btn-social btn-outline"><i class="fa fa-fw fa-google-plus"></i></a>-->
+                            <!--</li>-->
+                            <!-- <li>
+                                <a href="#" class="btn-social btn-outline"><i class="fa fa-fw fa-twitter"></i></a>
+                            </li> -->
+                            <li>
+                                <a href="https://www.linkedin.com/in/hao-zhang-b36900100" class="btn-social btn-outline"><i class="fa fa-fw fa-linkedin"></i></a>
+                            </li>
+                            <li>
+                                <a href="https://github.com/haogis" class="btn-social btn-outline"><i class="fa fa-fw fa-github"></i></a>
+                            </li>
+                            <!-- <li>
+                                <a href="https://gitlab.com/u/lidapeng" class="btn-social btn-outline"><i class="fa fa-fw fa-gitlab"></i></a>
+                            </li> -->
+                            <!--<li>-->
+                                <!--<a href="#" class="btn-social btn-outline"><i class="fa fa-fw fa-dribbble"></i></a>-->
+                            <!--</li>-->
+                        </ul>
+                    </div>
+                    <div class="footer-col col-md-4">
+                        <h3>My GitHub:</h3>
+                        <p>Feel free to check my source code at my GitHub webpage: <a href="https://github.com/haogis">https://github.com/haogis</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="footer-below">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-12">
+                        Copyright &copy; Hao Zhang 2016
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scroll to Top Button (Only visible on small and extra-small screen sizes) -->
+    <div class="scroll-top page-scroll hidden-sm hidden-xs hidden-lg hidden-md">
+        <a class="btn btn-primary" href="#page-top">
+            <i class="fa fa-chevron-up"></i>
+        </a>
+    </div>
+
+
+<script src="js/tweetpoint.js"></script>
+
+<script>
+
+var map = L.map('map').setView([32.775, -117.071],10);
+L.geoJson(quakePoints).addTo(map);
+
+var tweets = new L.LayerGroup();
+
+  var grayscale   = L.tileLayer(MB_URL, {id: 'mapbox.light', attribution: MB_ATTR}),
+    streets  = L.tileLayer(MB_URL, {id: 'mapbox.streets',   attribution: MB_ATTR});
+
+
+    var heat = L.heatLayer(quakePoints,{
+          radius: 20,
+          blur: 15,
+          maxZoom: 17
+      }).addTo(tweets);
+      map.addLayer(tweets);
+
+var baseLayers = {
+  "Grayscale": grayscale,
+  "Streets": streets
+};
+
+var overlays = {
+  "tweetpoint": tweets
+};
+
+L.control.layers(baseLayers, overlays).addTo(map);
+</script>
+
+
+    <!-- jQuery -->
+    <script src="vendor/jquery/jquery.min.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+
+    <!-- Plugin JavaScript -->
+    <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
+
+    <!-- Contact Form JavaScript -->
+    <script src="js/jqBootstrapValidation.js"></script>
+    <script src="js/contact_me.js"></script>
+
+    <!-- Theme JavaScript -->
+    <script src="js/freelancer.min.js"></script>
+
+</body>
+
+</html>
