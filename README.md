@@ -1,5 +1,5 @@
-# A website for Dapeng Li's CV
-Thi project hosts Dapeng's CV
+# A website for Hao Zhang's CV
+The project hosts Hao Zhang's CV
 
 ## Getting Started
 
@@ -19,4 +19,4 @@ Start Bootstrap is based on the [Bootstrap](http://getbootstrap.com/) framework 
 
 ## Copyright and License
 
-Copyright 2013-2016 Blackrock Digital LLC. Code released under the [MIT](https://github.com/BlackrockDigital/startbootstrap-freelancer/blob/gh-pages/LICENSE) license."# haogis.github.io" 
+Copyright 2013-2016 Blackrock Digital LLC. Code released under the [MIT](https://github.com/BlackrockDigital/startbootstrap-freelancer/blob/gh-pages/LICENSE) license."# haogis.github.io"
